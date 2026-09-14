@@ -14,7 +14,7 @@ jobs:
 
       - name: Extract latest Novel Writer project
         run: |
-          unzip -o NovelWriterAndroid_v1.3_TouchNavigation_Fixed_Project.zip
+          unzip -o NovelWriterAndroid_v1.4_RealTouch_Fix_Project.zip
           echo "V1.3 ORIGINAL REACT + ANDROID PROJECT EXTRACTED"
           ls -la NovelWriterAndroid
 
