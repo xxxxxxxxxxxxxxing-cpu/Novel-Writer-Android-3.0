@@ -16,7 +16,7 @@ jobs:
         run: |
           unzip -o NovelWriterAndroid_v1.5_AndroidFolder_Layout_Fix_Project.zip
           echo "V1.5 ANDROIDFOLDER LAYOUT FIX PROJECT EXTRACTED"
-          ls -la NovelWriterAndroid_v1.5_AndriodFolder_Layout_Fix_Project
+          ls -la NovelWriterAndroid_v1.5_AndroidFolder_Layout_Fix_Project
 
       - name: Set up Java
         uses: actions/setup-java@v5
