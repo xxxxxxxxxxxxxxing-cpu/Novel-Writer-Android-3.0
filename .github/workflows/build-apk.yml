@@ -44,7 +44,7 @@ jobs:
 
       - name: Show APK
         run: |
-          ls -lh NovelWriterAndroid_v1.4_RealTouch_Fix_Project/app/build/outputs/apk/debug/
+          ls -lh NovelWriterAndroid_v1.5_AndriodFolder_Layout_Fix_Project/app/build/outputs/apk/debug/
 
       - name: Upload APK
         uses: actions/upload-artifact@v6
