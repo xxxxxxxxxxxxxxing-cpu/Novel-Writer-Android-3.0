@@ -1,0 +1,54 @@
+name: Build Novel Writer APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Extract Novel Writer project
+        run: |
+          unzip -o NovelWriterAndroid_StorageSafe_Project.zip
+          echo "Project extracted"
+          ls -la NovelWriterAndroid
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Build debug APK
+        working-directory: NovelWriterAndroid
+        run: |
+          gradle assembleDebug --no-daemon
+
+      - name: Show APK
+        run: |
+          ls -lh NovelWriterAndroid/app/build/outputs/apk/debug/
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v6
+        with:
+          name: NovelWriter-APK
+          path: NovelWriterAndroid/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
