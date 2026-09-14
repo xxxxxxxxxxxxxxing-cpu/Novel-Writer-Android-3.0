@@ -12,11 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Extract latest Novel Writer project
+      - name: Extract v1.4 project
         run: |
           unzip -o NovelWriterAndroid_v1.4_RealTouch_Fix_Project.zip
-          echo "V1.3 ORIGINAL REACT + ANDROID PROJECT EXTRACTED"
-          ls -la NovelWriterAndroid
+          echo "V1.4 REAL TOUCH FIX PROJECT EXTRACTED"
+          ls -la NovelWriterAndroid_v1.4_RealTouch_Fix_Project
 
       - name: Set up Java
         uses: actions/setup-java@v5
@@ -38,17 +38,17 @@ jobs:
           gradle-version: '8.10.2'
 
       - name: Build debug APK
-        working-directory: NovelWriterAndroid
+        working-directory: NovelWriterAndroid_v1.4_RealTouch_Fix_Project
         run: |
           gradle clean assembleDebug --no-daemon
 
       - name: Show APK
         run: |
-          ls -lh NovelWriterAndroid/app/build/outputs/apk/debug/
+          ls -lh NovelWriterAndroid_v1.4_RealTouch_Fix_Project/app/build/outputs/apk/debug/
 
       - name: Upload APK
         uses: actions/upload-artifact@v6
         with:
           name: NovelWriter-APK
-          path: NovelWriterAndroid/app/build/outputs/apk/debug/app-debug.apk
+          path: NovelWriterAndroid_v1.4_RealTouch_Fix_Project/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
