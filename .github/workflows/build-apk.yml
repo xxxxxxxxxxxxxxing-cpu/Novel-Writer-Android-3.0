@@ -12,10 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Extract Novel Writer project
+      - name: Extract latest Novel Writer project
         run: |
-          unzip -o NovelWriterAndroid_StorageSafe_Project.zip
-          echo "Project extracted"
+          unzip -o NovelWriterAndroid_Fixed_UI_v1.2_Project.zip
+          echo "Latest project extracted"
           ls -la NovelWriterAndroid
 
       - name: Set up Java
@@ -40,7 +40,7 @@ jobs:
       - name: Build debug APK
         working-directory: NovelWriterAndroid
         run: |
-          gradle assembleDebug --no-daemon
+          gradle clean assembleDebug --no-daemon
 
       - name: Show APK
         run: |
