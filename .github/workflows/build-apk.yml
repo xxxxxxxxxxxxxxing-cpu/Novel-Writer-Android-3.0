@@ -14,7 +14,7 @@ jobs:
 
       - name: Extract v1.4 project
         run: |
-          unzip -o NovelWriterAndroid_v1.4_RealTouch_Fix_Project.zip
+          unzip -o NovelWriterAndroid_v1.5_AndroidFolder_Layout_Fix_Project.zip
           echo "V1.4 REAL TOUCH FIX PROJECT EXTRACTED"
           ls -la NovelWriterAndroid_v1.4_RealTouch_Fix_Project
 
@@ -38,7 +38,7 @@ jobs:
           gradle-version: '8.10.2'
 
       - name: Build debug APK
-        working-directory: NovelWriterAndroid_v1.4_RealTouch_Fix_Project
+        working-directory: NovelWriterAndroid_v1.5_AndroidFolder_Layout_Fix_Project
         run: |
           gradle clean assembleDebug --no-daemon
 
@@ -50,5 +50,5 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: NovelWriter-APK
-          path: NovelWriterAndroid_v1.4_RealTouch_Fix_Project/app/build/outputs/apk/debug/app-debug.apk
+          path: NovelWriterAndroid_v1.5_AndroidFolder_Layout_Fix_Project/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
